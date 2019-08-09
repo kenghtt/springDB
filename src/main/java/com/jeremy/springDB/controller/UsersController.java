@@ -1,5 +1,6 @@
 package com.jeremy.springDB.controller;
 
+import com.jeremy.springDB.Vo.Member;
 import com.jeremy.springDB.model.UsersEntity;
 import com.jeremy.springDB.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,24 +30,35 @@ public class UsersController {
     @Autowired
     UsersRepository usersRepository;
 
+    @Autowired
+    Member member;
+
     @RequestMapping("/get")
-    public List<UsersEntity> getAll(){
+    public List<UsersEntity> getAll() {
         return usersRepository.findAll();
     }
 
     @PostMapping(value = "/post")
-    public List<UsersEntity> persist(@RequestBody final UsersEntity user){
+    public List<UsersEntity> persist(@RequestBody final UsersEntity user) {
         usersRepository.save(user);
         return usersRepository.findAll();
     }
 
+    @PostMapping(value = "/member")
+    public void member(@RequestBody Member memberUser) {
 
+        System.out.println("member: " + member);
+        System.out.println("memberuser: " + memberUser);
+
+        member = memberUser;
+
+
+    }
 
 
     @RequestMapping("/quote")
-    public void getQuote(){
+    public void getQuote() {
         final String uri = "https://api.adviceslip.com/advice";
-
         RestTemplate restTemplate = new RestTemplate();
 
 //        JSONObject result = restTemplate.getForObject(uri, JSONObject.class);

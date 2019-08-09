@@ -27,23 +27,21 @@ public class UsersEntity {
     private int id;
     @Column(name = "name")
     private String name;
-    @Column(name = "team_name")
-    private String teamName;
     @Column(name = "salary")
     private int salary;
+    @Column(name = "company")
+    private String company;
 
     public UsersEntity(){
 
     }
 
-    public UsersEntity(int id, String name, String teamName, int salary){
+    public UsersEntity(int id, String name, int salary){
         this.id = id;
         this.name = name;
-        this.teamName= teamName;
         this.salary=salary;
 
     }
-
 
     public int getId() {
         return id;
@@ -61,14 +59,6 @@ public class UsersEntity {
         this.name = name;
     }
 
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
-
     public int getSalary() {
         return salary;
     }
@@ -77,6 +67,11 @@ public class UsersEntity {
         this.salary = salary;
     }
 
+    public String getCompany() {
+        return company;
+    }
 
-
+    public void setCompany(String company) {
+        this.company = company;
+    }
 }
